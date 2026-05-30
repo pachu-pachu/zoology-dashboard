@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KU B.Sc. Zoology S2 10-Day Master Timetable</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .font-code {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        /* Custom smooth scroll and interactions */
+        .tab-transition {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        /* Pulse for active sessions */
+        @keyframes subtle-pulse {
+            0%, 100% { border-color: rgba(99, 102, 241, 0.2); }
+            50% { border-color: rgba(239, 68, 68, 0.6); }
+        }
+        .active-session-border {
+            animation: subtle-pulse 2s infinite;
+        }
+        
+        /* Print Stylesheet Overrides */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+                color: #000000 !important;
+                font-size: 11px !important;
+            }
+            .print-container {
+                display: block !important;
+                width: 100% !important;
+            }
+            .print-card {
+                border: 1px solid #cbd5e1 !important;
+                background-color: #ffffff !important;
+                page-break-inside: avoid;
+                box-shadow: none !important;
+                margin-bottom: 1.5rem !important;
+                padding: 1.2rem !important;
+                border-radius: 8px !important;
+            }
+            /* Force all day contents to show on printed copy */
+            .day-content {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
+
+    <!-- Top-Level Navigation Bar -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50 no-print">
+        <div class="max-w-7xl mx-auto px-4 py-3.5 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="p-2.5 bg-gradient-to-tr from-rose-500 via-indigo-500 to-indigo-600 rounded-xl shadow-lg">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-base font-extrabold tracking-tight text-white flex items-center gap-2">
+                        KU B.Sc. Zoology S2 <span class="text-rose-400 text-[10px] bg-rose-500/10 px-2.5 py-0.5 rounded-full border border-rose-500/20 font-semibold tracking-wider uppercase">FYUGP 10-Day Master Timetable</span>
+                    </h1>
+                    <p class="text-[10px] text-slate-400 font-medium">Mapped to Animal Diversity-II, Plant Anatomy \& Biomolecules-I Syllabi</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2.5 w-full md:w-auto">
+                <button onclick="window.print()" class="w-full md:w-auto flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white px-5 py-2.5 rounded-xl text-xs font-bold shadow-lg shadow-indigo-600/10 transition-all">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                    </svg>
+                    Print or Save physical PDF
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6 sm:px-6 lg:px-8">
+        
+        <!-- Printable Page Heading Block -->
+        <div class="hidden print:block text-center border-b-2 border-slate-900 pb-5 mb-8">
+            <h1 class="text-3xl font-black text-slate-900 tracking-tight">KERALA UNIVERSITY CBCSS / FYUGP</h1>
+            <h2 class="text-lg font-bold text-slate-700 mt-1">B.Sc. Zoology Semester II • Complete 10-Day Study Timetable</h2>
+            <p class="text-sm text-slate-500 italic mt-1">Strict Dopamine-Gated Reward Protocol Included (5 Hours Daily Study/Max 2 Hours Phone Credit)</p>
+            <p class="text-xs text-slate-400 mt-0.5">Based on Core Course UK2DSCZOO101, Botany UK2DSCBOT102, and Chemistry UK2DSCCHE105 Syllabus Sheets</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 print-container">
+            
+            <!-- Left Grid: Interactive Sidebars (Columns 1-4) -->
+            <div class="lg:col-span-4 flex flex-col gap-6 no-print">
+                
+                <!-- The 2-Hour Dopamine Reward Station -->
+                <div class="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-5 shadow-xl relative overflow-hidden">
+                    <div class="absolute -top-12 -right-12 w-32 h-32 bg-rose-500/10 rounded-full blur-2xl"></div>
+                    <div class="absolute -bottom-12 -left-12 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl"></div>
+                    
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                            <span class="p-1 bg-rose-500/10 rounded text-rose-400">⚡</span>
+                            Dopamine Control Station
+                        </h2>
+                        <span class="text-[9px] bg-slate-800 border border-slate-700 px-2 py-0.5 rounded-full text-rose-400 font-mono">1 Block = 20M Phone</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 text-center mb-4">
+                        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3">
+                            <span class="block text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Session Blocks</span>
+                            <span id="blockCounterDisplay" class="block text-2xl font-black text-white mt-0.5">0 <span class="text-slate-600 text-sm">/ 6</span></span>
+                        </div>
+                        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3">
+                            <span class="block text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Phone Credit</span>
+                            <span id="phoneCreditDisplay" class="block text-2xl font-black text-rose-400 mt-0.5">0 <span class="text-slate-600 text-sm">Min</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="mb-4">
+                        <div class="flex justify-between text-[10px] font-bold text-slate-400 mb-1">
+                            <span>Today's Study Progress</span>
+                            <span id="progressPercentDisplay">0%</span>
+                        </div>
+                        <div class="w-full bg-slate-950 rounded-full h-2.5 p-0.5 border border-slate-800">
+                            <div id="progressBarFill" class="bg-gradient-to-r from-indigo-500 via-rose-500 to-emerald-400 h-1.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2">
+                        <button onclick="incrementSessionBlock()" class="flex-1 py-2.5 bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-white font-bold rounded-xl text-xs tracking-wide transition shadow-lg shadow-indigo-600/10">
+                            + Complete Block
+                        </button>
+                        <button onclick="resetSessionBlocks()" class="px-3 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white rounded-xl text-xs transition">
+                            Reset
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Live Study Countdown Clock -->
+                <div id="timerCard" class="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-5 shadow-xl tab-transition">
+                    <div class="flex items-center justify-between mb-3.5">
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+                            <span class="p-1 bg-indigo-500/10 rounded text-indigo-400">⏱️</span>
+                            Active Session Timer
+                        </h3>
+                        <select id="timerSelector" onchange="adjustTimerLength()" class="bg-slate-950 text-[10px] font-semibold text-indigo-400 border border-slate-800 rounded-lg px-2 py-0.5 focus:outline-none">
+                            <option value="50">50 Minutes (Standard)</option>
+                            <option value="25">25 Minutes (Short)</option>
+                            <option value="10">10 Minutes (Test/Drill)</option>
+                        </select>
+                    </div>
+
+                    <div class="text-center py-5 bg-slate-950/60 rounded-xl border border-slate-800/50 mb-3.5">
+                        <div id="countdownDisplay" class="text-4xl font-extrabold tracking-widest font-code text-white">50:00</div>
+                        <div id="countdownStatus" class="text-[9px] uppercase tracking-widest font-bold text-slate-500 mt-1.5">Ready to Grind</div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <button id="toggleTimerBtn" onclick="toggleTimerState()" class="py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase rounded-lg transition">
+                            Start Focus
+                        </button>
+                        <button onclick="resetTimerState()" class="py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold uppercase rounded-lg transition">
+                            Reset Block
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Local Persistence Notes Board -->
+                <div class="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-2xl p-5 shadow-xl">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2.5 flex items-center gap-1.5">
+                        <span class="p-1 bg-amber-500/10 rounded text-amber-400">✏️</span>
+                        Scratchpad \& Memorandums
+                    </h3>
+                    <textarea id="deskScratchpad" oninput="saveDeskMemo()" placeholder="Jot down problematic concepts (e.g., *Boerhaavia* concentric vascular rings, *Peripatus* evolutionary traits, Henderson-Hasselbalch equations)..." class="w-full h-36 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-300 placeholder:text-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/10 transition resize-none font-sans"></textarea>
+                    <div class="flex justify-between items-center mt-2 text-[10px] text-slate-500">
+                        <span>Saved in browser sandbox</span>
+                        <button onclick="clearDeskMemo()" class="text-rose-400 hover:text-rose-300 font-semibold">Wipe Scratchpad</button>
+                    </div>
+                </div>
+
+                <!-- General Reward Rules Block -->
+                <div class="bg-rose-950/20 border border-rose-900/30 rounded-2xl p-5">
+                    <h3 class="text-xs font-bold text-rose-400 uppercase tracking-widest mb-2 flex items-center gap-1.5">
+                        <span class="text-rose-500">🛡️</span>
+                        Lockout Directives
+                    </h3>
+                    <ul class="text-[10.5px] text-slate-400 space-y-1.5 list-disc pl-4 leading-relaxed">
+                        <li>Each complete study day is carved into <strong>6 specific blocks</strong> of 50 minutes of deep focus.</li>
+                        <li><strong>Dopamine transactional payout:</strong> 1 finished study session = exactly 20 minutes of unrestricted phone allowance.</li>
+                        <li><strong>Standard cap:</strong> 6 blocks logged = 120 minutes (2 hours) of total available time. No rollovers are permitted.</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Right Grid: 10-Day Detailed Syllabi Scheduler (Columns 5-12) -->
+            <div class="lg:col-span-8 flex flex-col gap-6">
+                
+                <!-- Quick Instructions Header -->
+                <div class="bg-gradient-to-r from-slate-900 to-indigo-950/40 border border-slate-800/80 rounded-2xl p-5 shadow-xl print-card">
+                    <h2 class="text-base font-extrabold text-white">Interactive 10-Day Prep Timetable</h2>
+                    <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+                        This schedule completely wraps around your provided curriculum sheets for **Core Zoology (UK2DSCZOO101)**, **Complementary Botany (UK2DSCBOT102)**, and **Complementary Chemistry (UK2DSCCHE105)**. Use the interactive buttons below to scan Day-by-Day or click "Print / Save PDF" to produce a full sequential catalog.
+                    </p>
+                </div>
+
+                <!-- Dynamic Navigation Tabs for Day Selection -->
+                <div class="flex gap-1.5 overflow-x-auto pb-1.5 no-print" id="dayTabsContainer">
+                    <!-- Javascript will populate Day 1 to 10 here for high usability -->
+                </div>
+
+                <!-- Comprehensive 10-Day Scheduler Stack -->
+                <div class="space-y-6" id="timetableDaysContainer">
+                    
+                    <!-- Day 1 Content Card -->
+                    <div id="dayContent-1" class="day-content bg-slate-900/55 border border-slate-800 rounded-2xl p-5 print-card">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3 mb-4">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-8 h-8 bg-indigo-500/10 text-indigo-400 border border-indigo-500/25 flex items-center justify-center rounded-lg text-xs font-black">D1</span>
+                                <h3 class="font-bold text-white text-sm">Annelida Classification \& Cell Wall Dynamics</h3>
+                            </div>
+                            <span class="text-[9px] font-bold text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider">Zoo Module I \& Botany Module I</span>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-slate-950/40 border border-slate-800/60 p-3.5 rounded-xl">
+                                <h4 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-2">Subject Breakdown Checklist</h4>
+                                <div class="space-y-2.5">
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Zoology (Annelida Characteristics):</strong> Study general traits and taxonomy up to classes. Learn details of *Nereis* (with heteronereis structural variations), Earthworm characteristics, and Leech profiles.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Zoology (General Topic):</strong> Complete detailed process, economic benefits, and steps of Vermicomposting.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Botany (Anatomy Intro \& Cell Wall):</strong> Study scope of anatomy, fundamental parts of flowering plants, and histological stains (Saffranin, Glycerol, Water mounting). Learn Primary vs Secondary cell walls, pits, and plasmodesmata.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Botany (Wall Materials):</strong> Master chemical composition and deposits of cellulose, cutin, lignin, and suberin.</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Morning Goal (Blocks 1-2)</strong>
+                                    Draft complete labeled layouts of *Nereis* and parapodium structures. Contrast heteronereis adaptations.
+                                </div>
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Afternoon/Night Goal (Blocks 3-6)</strong>
+                                    Read cell wall structural differentiation and write brief profiles of standard stains.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 2 Content Card -->
+                    <div id="dayContent-2" class="day-content bg-slate-900/55 border border-slate-800 rounded-2xl p-5 print-card">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3 mb-4">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-8 h-8 bg-indigo-500/10 text-indigo-400 border border-indigo-500/25 flex items-center justify-center rounded-lg text-xs font-black">D2</span>
+                                <h3 class="font-bold text-white text-sm">Prawn Morphology \& Cell Inclusions</h3>
+                            </div>
+                            <span class="text-[9px] font-bold text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider">Zoo Module II \& Botany Module I</span>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-slate-950/40 border border-slate-800/60 p-3.5 rounded-xl">
+                                <h4 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-2">Subject Breakdown Checklist</h4>
+                                <div class="space-y-2.5">
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Zoology (Arthropoda Traits \& Prawn):</strong> Master general characters of Phylum Arthropoda. Begin deep Type Study of the Prawn (morphology, appendages, structural features).</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Zoology (Digestive System):</strong> Study the digestive tract, hepatopancreas, and feeding mechanisms in Prawn.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Botany (Non-living inclusions):</strong> Learn Reserve food material categorization (carbohydrates, eccentric/concentric starch granules, complex protein crystals, aleurone grains).</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Botany (Excretory Inclusions):</strong> Study alkaloids, latex, resins, and mineral crystals including Cystoliths and Raphides structures (highly tested in practicals).</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Morning Goal (Blocks 1-2)</strong>
+                                    Draw Prawn digestive apparatus with full labeling details.
+                                </div>
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Afternoon/Night Goal (Blocks 3-6)</strong>
+                                    Differentiate between calcium carbonate (Cystoliths) and calcium oxalate (Raphides) inclusions.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 3 Content Card -->
+                    <div id="dayContent-3" class="day-content bg-slate-900/55 border border-slate-800 rounded-2xl p-5 print-card">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3 mb-4">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-8 h-8 bg-indigo-500/10 text-indigo-400 border border-indigo-500/25 flex items-center justify-center rounded-lg text-xs font-black">D3</span>
+                                <h3 class="font-bold text-white text-sm">Arthropoda Classes \& Plant Meristems</h3>
+                            </div>
+                            <span class="text-[9px] font-bold text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider">Zoo Module II \& Botany Module II</span>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-slate-950/40 border border-slate-800/60 p-3.5 rounded-xl">
+                                <h4 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-2">Subject Breakdown Checklist</h4>
+                                <div class="space-y-2.5">
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Zoology (Arthropod Classification):</strong> Review classification down to classes: Trilobitamorpha, Merostomata (*Limulus*), Arachnida (Scorpion), Pycnogonida (*Nymphon*), Crustacea (*Sacculina*), Chilopoda (*Scolopendra*), Symphyla (*Scutigerella*), Diplopoda (*Spirostreptus*), Pauropoda (*Pauropus*).</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Zoology (Insecta):</strong> Detail Insecta characteristics using Cockroach mouth parts and basic digestive system layout.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Botany (Meristems):</strong> Study definitions and classification based on origin, position, plane of cell division, and function.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Botany (Apical Organization):</strong> Master shoot apex theories (Apical Cell, Histogen, Tunica-Corpus) and root apex organization theories (Apical Cell, Histogen, Korper-Kappe).</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Morning Goal (Blocks 1-2)</strong>
+                                    Draw and compare the mandible and maxillae mouthparts of a cockroach.
+                                </div>
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Afternoon/Night Goal (Blocks 3-6)</strong>
+                                    Differentiate the Tunica-Corpus system from Root Korper-Kappe divisions.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 4 Content Card -->
+                    <div id="dayContent-4" class="day-content bg-slate-900/55 border border-slate-800 rounded-2xl p-5 print-card">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3 mb-4">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-8 h-8 bg-indigo-500/10 text-indigo-400 border border-indigo-500/25 flex items-center justify-center rounded-lg text-xs font-black">D4</span>
+                                <h3 class="font-bold text-white text-sm">Onychophora, Mollusca \& Tissue Systems</h3>
+                            </div>
+                            <span class="text-[9px] font-bold text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider">Zoo Module III \& Botany Module III</span>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-slate-950/40 border border-slate-800/60 p-3.5 rounded-xl">
+                                <h4 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-2">Subject Breakdown Checklist</h4>
+                                <div class="space-y-2.5">
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Zoology (Onychophora):</strong> Study general characteristics and evolutionary significance of *Peripatus* as a connecting link.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Zoology (Mollusca):</strong> Master properties and classification up to classes: Monoplacophora (*Neopilina*), Polyplacophora (*Chiton*), Aplacophora (*Neomenia*), Gastropoda (*Pila*), Scaphopoda (*Dentalium*), Pelecypoda (*Perna*), Cephalopoda (*Sepia*). Study economic importance of Molluscs.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Botany (Tissues):</strong> Learn permanent tissues (simple, complex, secretory including schizogenous/lysigenous cavities, laticifers).</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Botany (Tissue Systems):</strong> Study Epidermal, Ground, and Vascular systems. Contrast stomata layouts (anomocytic, anisocytic, paracytic, diacytic, graminaceous) and vascular cylinder formats (conjoint, radial, collateral, bicollateral, concentric).</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Morning Goal (Blocks 1-2)</strong>
+                                    Summarize *Peripatus* evolutionary link traits (Annelid vs Arthropod characteristics).
+                                </div>
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Afternoon/Night Goal (Blocks 3-6)</strong>
+                                    Sketch and define amphivasal and amphicribral vascular bundles.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 5 Content Card -->
+                    <div id="dayContent-5" class="day-content bg-slate-900/55 border border-slate-800 rounded-2xl p-5 print-card">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3 mb-4">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-8 h-8 bg-indigo-500/10 text-indigo-400 border border-indigo-500/25 flex items-center justify-center rounded-lg text-xs font-black">D5</span>
+                                <h3 class="font-bold text-white text-sm">Echinodermata \& Internal Plant Anatomy</h3>
+                            </div>
+                            <span class="text-[9px] font-bold text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider">Zoo Module IV \& Botany Module IV</span>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-slate-950/40 border border-slate-800/60 p-3.5 rounded-xl">
+                                <h4 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-2">Subject Breakdown Checklist</h4>
+                                <div class="space-y-2.5">
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Zoology (Echinodermata):</strong> Study traits and classification up to classes: Asteroidea (*Asterias*), Ophiuroidea (*Ophiothrix*), Echinoidea (*Echinus*), Holothuroidea (Sea Cucumber), Crinoidea (Sea Lily).</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Zoology (Systems):</strong> Master the anatomy of the water-vascular system and diagnostic larval forms in Echinodermata.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Botany (Primary \& Secondary Growth):</strong> Study primary structure of roots, stems, and leaves in dicots and monocots. Read normal secondary growth in dicot roots and stems, vascular cambium structures, and dendrochronology.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Botany (Anomalous Growth):</strong> Master anomalous secondary growth in stems—specifically *Boerhaavia* (concentric vascular rings) and *Bignonia* (furrowed xylem) (highly tested).</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Morning Goal (Blocks 1-2)</strong>
+                                    Draw the detailed water-vascular system of *Asterias* with labels.
+                                </div>
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Afternoon/Night Goal (Blocks 3-6)</strong>
+                                    Draft the cross-section of *Boerhaavia* stem, pointing out medullary bundles.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 6 Content Card -->
+                    <div id="dayContent-6" class="day-content bg-slate-900/55 border border-slate-800 rounded-2xl p-5 print-card">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3 mb-4">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-8 h-8 bg-indigo-500/10 text-indigo-400 border border-indigo-500/25 flex items-center justify-center rounded-lg text-xs font-black">D6</span>
+                                <h3 class="font-bold text-white text-sm">Economic Invertebrates \& Adaptive Anatomy</h3>
+                            </div>
+                            <span class="text-[9px] font-bold text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider">Zoo Module V \& Botany Module IV \& V</span>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-slate-950/40 border border-slate-800/60 p-3.5 rounded-xl">
+                                <h4 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-2">Subject Breakdown Checklist</h4>
+                                <div class="space-y-2.5">
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Zoology (Apiculture):</strong> Study morphology and social organization in honeybees. Learn about apiculture institutes in Southern India.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Zoology (Sericulture \& Pearl Culture):</strong> Learn silk moth life-cycles, detailed pearl culture mechanisms, and related Southern R\&D organizations.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Botany (Anatomical Details):</strong> Study petiole anatomy, abscission layers, nodal anatomy, and the cambium's role in wound healing and grafting.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Botany (Adaptive Anatomy):</strong> Study morphological and anatomical adaptations of Hydrophytes, Xerophytes, and Epiphytes.</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Morning Goal (Blocks 1-2)</strong>
+                                    Study and contrast the morphological traits of queen, drone, and worker bees.
+                                </div>
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Afternoon/Night Goal (Blocks 3-6)</strong>
+                                    Outline Xerophyte (e.g., *Nerium* leaf) structures highlighting sunken stomata.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 7 Content Card -->
+                    <div id="dayContent-7" class="day-content bg-slate-900/55 border border-slate-800 rounded-2xl p-5 print-card">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3 mb-4">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-8 h-8 bg-indigo-500/10 text-indigo-400 border border-indigo-500/25 flex items-center justify-center rounded-lg text-xs font-black">D7</span>
+                                <h3 class="font-bold text-white text-sm">Carbohydrate Configurations \& Properties</h3>
+                            </div>
+                            <span class="text-[9px] font-bold text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider">Chemistry Module I</span>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-slate-950/40 border border-slate-800/60 p-3.5 rounded-xl">
+                                <h4 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-2">Subject Breakdown Checklist</h4>
+                                <div class="space-y-2.5">
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Chemistry (Monosaccharides):</strong> Study carbohydrate classification. Master D \& L glyceraldehyde configurations. Detail the linear and cyclic structures of Ribose, 2-deoxyribose, Glucose, Fructose, Mannose, and Galactose.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Chemistry (Reactions \& Sugars):</strong> Study Glucose and Fructose reactions (hydroxyl, aldehyde, ketone groups), actions of acids and alkalis, reducing actions, mutarotation, epimerization, and amino sugars.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Chemistry (Ring Configurations):</strong> Master Pyranoside and Furanoside structures of Glucose and Fructose. Study disaccharides (Sucrose, Lactose, Maltose, Cellobiose) and the inversion of sucrose.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Chemistry (Polysaccharides):</strong> Study structural properties of Cellulose, Chitin, Pectin, Starch, Inulin, Glycogen, and Glycosaminoglycans (Heparin, Hyaluronic acid).</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Morning Goal (Blocks 1-2)</strong>
+                                    Practice Haworth projection drawings of $\alpha$-D-glucopyranose and $\beta$-D-fructofuranose.
+                                </div>
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Afternoon/Night Goal (Blocks 3-6)</strong>
+                                    Draft the mechanism behind the inversion of sucrose and mutarotation kinetics.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 8 Content Card -->
+                    <div id="dayContent-8" class="day-content bg-slate-900/55 border border-slate-800 rounded-2xl p-5 print-card">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3 mb-4">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-8 h-8 bg-indigo-500/10 text-indigo-400 border border-indigo-500/25 flex items-center justify-center rounded-lg text-xs font-black">D8</span>
+                                <h3 class="font-bold text-white text-sm">Amino Acids, Proteins \& DNA Mechanics</h3>
+                            </div>
+                            <span class="text-[9px] font-bold text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider">Chemistry Module II</span>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-slate-950/40 border border-slate-800/60 p-3.5 rounded-xl">
+                                <h4 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-2">Subject Breakdown Checklist</h4>
+                                <div class="space-y-2.5">
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Chemistry (Amino Acids Properties):</strong> Study amino acid classification and properties (essential/non-essential, Zwitterions, and Isoelectric point).</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Chemistry (Synthesis \& Proteins):</strong> Study synthesis of Glycine, Alanine, and Tryptophan. Learn peptide synthesis methods (Carbobenzoxy, Sheehan, and solid phase synthesis). Define protein structural hierarchies (primary, secondary, tertiary, quaternary structures, denaturation, and color reactions).</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Chemistry (Nucleic Acids):</strong> Master RNA \& DNA structure (purine and pyrimidine bases, nucleosides, nucleotides, phosphodiester linkages).</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Chemistry (Replication):</strong> Study hydrolysis of nucleoproteins, biological significance of nucleic acids, and semi-conservative replication of DNA.</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Morning Goal (Blocks 1-2)</strong>
+                                    Draft Glycine and Alanine synthesis steps and study Zwitterion structure configurations.
+                                </div>
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Afternoon/Night Goal (Blocks 3-6)</strong>
+                                    Differentiate DNA purine/pyrimidine bonds and write out step-by-step replication stages.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 9 Content Card -->
+                    <div id="dayContent-9" class="day-content bg-slate-900/55 border border-slate-800 rounded-2xl p-5 print-card">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3 mb-4">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-8 h-8 bg-indigo-500/10 text-indigo-400 border border-indigo-500/25 flex items-center justify-center rounded-lg text-xs font-black">D9</span>
+                                <h3 class="font-bold text-white text-sm">Solutions, Colloidal Chemistry \& Buffers</h3>
+                            </div>
+                            <span class="text-[9px] font-bold text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider">Chemistry Module III</span>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-slate-950/40 border border-slate-800/60 p-3.5 rounded-xl">
+                                <h4 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-2">Subject Breakdown Checklist</h4>
+                                <div class="space-y-2.5">
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Chemistry (Concentration Units):</strong> Master Molarity, Normality, Molality, mole fraction, and solve basic numerical problems.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Chemistry (Diffusion \& Donnan Equilibrium):</strong> Study diffusion, osmosis principles, isotonic/hypotonic/hypertonic solutions, Donnan Membrane Equilibrium, and colloidal chemistry preparation and charge properties.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Chemistry (pH \& Acid-Base):</strong> Study ionic product of water, pH scale, pOH, Bronsted-Lewis acid-base theories, Ka and pKa dissociation parameters, and pH indicators.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Chemistry (Henderson Equation):</strong> Derivation and application of Henderson-Hasselbalch equation. Master buffer actions in biological fluids and solve related buffer calculations.</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Morning Goal (Blocks 1-2)</strong>
+                                    Derive the Henderson-Hasselbalch equation and verify pH buffer calculations.
+                                </div>
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Afternoon/Night Goal (Blocks 3-6)</strong>
+                                    Summarize Donnan Membrane Equilibrium and practice molarity/normality conversions.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 10 Content Card -->
+                    <div id="dayContent-10" class="day-content bg-slate-900/55 border border-slate-800 rounded-2xl p-5 print-card page-break">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3 mb-4">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-8 h-8 bg-indigo-500/10 text-indigo-400 border border-indigo-500/25 flex items-center justify-center rounded-lg text-xs font-black">D10</span>
+                                <h3 class="font-bold text-white text-sm">Heterocycles, Bio Inorganic \& Lab Synthesis</h3>
+                            </div>
+                            <span class="text-[9px] font-bold text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider">Chemistry Module IV \& V</span>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-slate-950/40 border border-slate-800/60 p-3.5 rounded-xl">
+                                <h4 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-2">Subject Breakdown Checklist</h4>
+                                <div class="space-y-2.5">
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Chemistry (Heterocyclic Rings):</strong> Learn chemical structure and aromaticity of Furan, Pyrrole, Thiophene, 1,3-diazole, 1,3-thiazole, Pyridine, 1,3-diazine, Indole, Quinoline, Isoquinoline, Purine, and Pyrimidine bases.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Chemistry (Metalloporphyrins):</strong> Study Cytochromes, Chlorophyll, Photosynthesis, Respiration, Hemoglobin, Myoglobin, and the oxygenation/carbon dioxide transport mechanisms.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Chemistry (Inorganic Cycles):</strong> Study biological nitrogen fixation, carbon fixation, and the carbon cycle. Note the biological roles/toxicity profiles of Cr, Mn, Ni, Cu, Se, Mo, Co, Fe, and Zn.</span>
+                                    </label>
+                                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                                        <input type="checkbox" onchange="countCheckedTasks()" class="checklist-box mt-0.5 h-3.5 w-3.5 rounded border-slate-800 bg-slate-900 text-indigo-500 focus:ring-indigo-500">
+                                        <span><strong>Chemistry (Practical focus):</strong> Review organic compound classification tests, functional group detection procedures, and physical constants determination.</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Morning Goal (Blocks 1-2)</strong>
+                                    Practice heterocyclic rings structures and check off their aromaticity characteristics.
+                                </div>
+                                <div class="p-3 bg-slate-950/80 rounded-xl border border-slate-850">
+                                    <strong class="text-indigo-400 block mb-1 font-semibold">Afternoon/Night Goal (Blocks 3-6)</strong>
+                                    Learn the cooperativity mechanism of $O_2$ loading in hemoglobin vs myoglobin.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Custom Notification Message Area (Bypasses Window Alerts) -->
+        <div id="msgBox" class="hidden fixed bottom-6 right-6 z-50 bg-slate-900 border border-indigo-500/40 px-5 py-4 rounded-xl shadow-2xl max-w-sm w-full no-print">
+            <div class="flex items-start gap-3">
+                <span class="p-1 bg-indigo-500/10 rounded text-indigo-400 text-sm">💡</span>
+                <div class="flex-grow">
+                    <p id="msgText" class="text-xs font-semibold text-slate-200 leading-relaxed"></p>
+                </div>
+                <button onclick="document.getElementById('msgBox').classList.add('hidden')" class="text-slate-500 hover:text-slate-300 text-xs font-bold">✕</button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- UI Progress Bar Indicator -->
+    <footer class="bg-slate-900/60 text-slate-500 text-center py-4 text-[10px] border-t border-slate-900 no-print mt-10">
+        Kerala University FYUGP S2 • Study Companion • Designed for Perfect Compliance
+    </footer>
+
+    <script>
+        // Core Dashboard States
+        let sessionsLogged = parseInt(localStorage.getItem('ku_s2_blocks_logged')) || 0;
+        let countdownSeconds = 50 * 60; // 50 Mins default
+        let timerReference = null;
+
+        // Initialize Day Tab Navigation
+        const totalDays = 10;
+        let activeSelectedDay = 1;
+
+        // Sound generation to bypass browser alerts
+        function triggerAppAcoustic(pitch, span, wave = "sine") {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) return;
+                const audioCtx = new AudioContext();
+                const oscNode = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+
+                oscNode.type = wave;
+                oscNode.frequency.setValueAtTime(pitch, audioCtx.currentTime);
+                gainNode.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + span);
+
+                oscNode.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+
+                oscNode.start();
+                oscNode.stop(audioCtx.currentTime + span);
+            } catch(error) {
+                console.warn("Audio Context block bypass triggered:", error);
+            }
+        }
+
+        // Generate the Day Selection Navigation Elements
+        function buildDynamicTabs() {
+            const container = document.getElementById('dayTabsContainer');
+            container.innerHTML = '';
+            
+            for (let i = 1; i <= totalDays; i++) {
+                const button = document.createElement('button');
+                button.className = `flex-none px-4 py-2.5 rounded-xl text-xs font-bold tab-transition ${
+                    activeSelectedDay === i 
+                    ? 'bg-rose-50 text-white shadow-lg shadow-rose-500/20' 
+                    : 'bg-slate-900 border border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-200'
+                }`;
+                button.textContent = `Day ${i}`;
+                button.onclick = () => selectActiveDay(i);
+                container.appendChild(button);
+            }
+        }
+
+        function selectActiveDay(dayNum) {
+            activeSelectedDay = dayNum;
+            buildDynamicTabs();
+
+            // Display selected day and conceal others
+            for (let i = 1; i <= totalDays; i++) {
+                const contentBlock = document.getElementById(`dayContent-${i}`);
+                if (contentBlock) {
+                    if (i === dayNum) {
+                        contentBlock.classList.remove('hidden');
+                        contentBlock.classList.add('block');
+                    } else {
+                        contentBlock.classList.remove('block');
+                        contentBlock.classList.add('hidden');
+                    }
+                }
+            }
+            triggerAppAcoustic(520, 0.08);
+        }
+
+        // Dopamine Tracker Operations
+        function refreshDopamineHUD() {
+            document.getElementById('blockCounterDisplay').innerHTML = `${sessionsLogged} <span class="text-slate-600 text-sm">/ 6</span>`;
+            const creditMinutes = sessionsLogged * 20;
+            document.getElementById('phoneCreditDisplay').innerHTML = `${creditMinutes} <span class="text-slate-600 text-sm">Min</span>`;
+            
+            const ratioPercent = Math.min(Math.round((sessionsLogged / 6) * 100), 100);
+            document.getElementById('progressBarFill').style.width = `${ratioPercent}%`;
+            document.getElementById('progressPercentDisplay').textContent = `${ratioPercent}%`;
+        }
+
+        function incrementSessionBlock() {
+            if (sessionsLogged >= 6) {
+                displayHUDNotification("Max credit achieved for today! Unwind and access your device.", "success");
+                return;
+            }
+            sessionsLogged++;
+            localStorage.setItem('ku_s2_blocks_logged', sessionsLogged);
+            refreshDopamineHUD();
+            triggerAppAcoustic(880, 0.45, "sine");
+            displayHUDNotification(`Session Block Logged! +20 minutes phone credit.`, "success");
+        }
+
+        function resetSessionBlocks() {
+            sessionsLogged = 0;
+            localStorage.removeItem('ku_s2_blocks_logged');
+            refreshDopamineHUD();
+            triggerAppAcoustic(180, 0.5, "sawtooth");
+            displayHUDNotification("Daily counters have reset. Set your devices aside.", "info");
+        }
+
+        // Custom Notification Bar (Bypasses Native Window Alerts)
+        function displayHUDNotification(text, kind) {
+            const box = document.getElementById('msgBox');
+            const txt = document.getElementById('msgText');
+            txt.textContent = text;
+            box.classList.remove('hidden');
+            setTimeout(() => {
+                box.classList.add('hidden');
+            }, 6000);
+        }
+
+        // Active Session Timer Actions
+        function adjustTimerLength() {
+            const selectValue = parseInt(document.getElementById('timerSelector').value);
+            countdownSeconds = selectValue * 60;
+            updateCountdownLabel();
+            if (timerReference) {
+                toggleTimerState(); // Pause active run
+            }
+        }
+
+        function updateCountdownLabel() {
+            const mins = Math.floor(countdownSeconds / 60);
+            const secs = countdownSeconds % 60;
+            document.getElementById('countdownDisplay').textContent = 
+                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function toggleTimerState() {
+            const btn = document.getElementById('toggleTimerBtn');
+            const card = document.getElementById('timerCard');
+            const label = document.getElementById('countdownStatus');
+
+            if (timerReference) {
+                // Pause sequence
+                clearInterval(timerReference);
+                timerReference = null;
+                btn.textContent = "Resume Focus";
+                btn.className = "py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold uppercase rounded-lg transition";
+                card.classList.remove('active-session-border');
+                label.textContent = "Session Paused";
+                triggerAppAcoustic(440, 0.2, "triangle");
+            } else {
+                // Play sequence
+                btn.textContent = "Pause Focus";
+                btn.className = "py-2 bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold uppercase rounded-lg transition";
+                card.classList.add('active-session-border');
+                label.textContent = "Focus Active";
+                triggerAppAcoustic(660, 0.25, "sine");
+
+                timerReference = setInterval(() => {
+                    if (countdownSeconds <= 0) {
+                        clearInterval(timerReference);
+                        timerReference = null;
+                        incrementSessionBlock();
+                        resetTimerState();
+                        triggerAppAcoustic(980, 0.9, "sine");
+                    } else {
+                        countdownSeconds--;
+                        updateCountdownLabel();
+                    }
+                }, 1000);
+            }
+        }
+
+        function resetTimerState() {
+            clearInterval(timerReference);
+            timerReference = null;
+            adjustTimerLength();
+            document.getElementById('toggleTimerBtn').textContent = "Start Focus";
+            document.getElementById('toggleTimerBtn').className = "py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase rounded-lg transition";
+            document.getElementById('timerCard').classList.remove('active-session-border');
+            document.getElementById('countdownStatus').textContent = "Ready to Focus";
+        }
+
+        // Scratchpad Persisted Data Functions
+        function saveDeskMemo() {
+            const payload = document.getElementById('deskScratchpad').value;
+            localStorage.setItem('ku_s2_scratch_notes', payload);
+        }
+
+        function loadDeskMemo() {
+            const cachedValue = localStorage.getItem('ku_s2_scratch_notes');
+            if (cachedValue) {
+                document.getElementById('deskScratchpad').value = cachedValue;
+            }
+        }
+
+        function clearDeskMemo() {
+            document.getElementById('deskScratchpad').value = '';
+            localStorage.removeItem('ku_s2_scratch_notes');
+            triggerAppAcoustic(200, 0.15, "sawtooth");
+        }
+
+        // Track and compute checklist completed percent
+        function countCheckedTasks() {
+            const boxes = document.querySelectorAll('.checklist-box');
+            let checkedCount = 0;
+            boxes.forEach(box => {
+                if (box.checked) checkedCount++;
+            });
+            // Update individual task states locally if wanted
+            triggerAppAcoustic(720, 0.05);
+        }
+
+        // Init System Trigger
+        window.onload = function() {
+            buildDynamicTabs();
+            selectActiveDay(1);
+            refreshDopamineHUD();
+            updateCountdownLabel();
+            loadDeskMemo();
+        }
+    </script>
+</body>
+</html>
